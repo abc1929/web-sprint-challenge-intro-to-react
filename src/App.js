@@ -42,9 +42,11 @@ const App = () => {
          )
          .then((res) => {
             setData(res.data);
-            // console.log(res.data);
+            // console.log(res.data.count);
          })
          .catch((err) => console.log("Error occured: " + err));
+
+      return () => {};
    }, [page]);
 
    if (!data) return <div />;
@@ -62,8 +64,11 @@ const App = () => {
                />
             ))}
          </Accordion>
-
-         <BottomNav page={page} setPage={setPage} maxPage={data.count} />
+         <BottomNav
+            page={page}
+            setPage={setPage}
+            maxPage={Math.floor(data.count / 10)}
+         />
       </AppDiv>
    );
 };

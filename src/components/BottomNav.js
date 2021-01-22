@@ -29,6 +29,7 @@ const BottomNavDiv = styled.div`
 const BottomNav = (props) => {
    const setPage = props.setPage;
    const page = props.page;
+   const maxpage = props.maxPage;
 
    const Pages = () => {
       // ideal page bar: tbd
@@ -76,13 +77,13 @@ const BottomNav = (props) => {
          <Button
             rightIcon={<ArrowForwardIcon w={25} h={25} />}
             onClick={() => {
-               setPage(page + 1);
+               setPage(page + 1 <= maxpage ? page + 1 : maxpage);
             }}
          />
          <Button
             rightIcon={<ArrowRightIcon w={21} h={21} />}
             onClick={() => {
-               setPage(page + 10);
+               setPage(page + 10 <= maxpage ? page + 10 : maxpage);
             }}
          />
       </BottomNavDiv>
